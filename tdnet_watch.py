@@ -23,3 +23,16 @@ def main():
 
 if __name__ == "__main__":
     main()
+print("=== TEST: sending message to Discord ===")
+
+import os
+import requests
+
+webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
+
+requests.post(
+    webhook_url,
+    json={"content": "✅ GitHub Actions からのテスト通知です"}
+)
+
+print("=== TEST: done ===")
