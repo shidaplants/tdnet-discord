@@ -25,3 +25,10 @@ jobs:
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: python tdnet_watch.py
+      - name: Commit last notice
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add last_notice.txt
+          git commit -m "Update last notice" || echo "No changes"
+          git push
